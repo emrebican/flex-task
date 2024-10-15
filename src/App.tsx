@@ -1,25 +1,51 @@
 import Layout from "./layout/Layout";
 import "./App.css";
-import { Button } from "./components/ui/button";
-import Card from "./components/ui/card";
+import CategoryList from "./components/category/CategoryList/CategoryList";
+import { CategoryModel } from "./models/Category.model";
 
-function App() {
+const App = () => {
+  const categories: CategoryModel[] = [
+    {
+      id: 1,
+      title: "category 1",
+      notes: [
+        {
+          id: 1,
+          title: "note 11",
+          content: "content 11",
+        },
+      ],
+    },
+    {
+      id: 2,
+      title: "category 2",
+      notes: [
+        {
+          id: 1,
+          title: "note 21",
+          content: "content 21",
+        },
+      ],
+    },
+    {
+      id: 3,
+      title: "category 3",
+      notes: [
+        {
+          id: 1,
+          title: "note 31",
+          content: "content 31",
+        },
+      ],
+    },
+  ];
+
   return (
     <Layout>
-      <Card>
-        <div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem quasi
-          deserunt, nobis voluptates accusantium ipsum sint nulla alias fugit
-          repellat vel veritatis, corrupti error qui harum. Mollitia ipsam
-          recusandae expedita. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Autem quasi deserunt, nobis voluptates accusantium
-          ipsum sint nulla alias fugit repellat vel veritatis, corrupti error
-          qui harum. Mollitia ipsam recusandae expedita.
-        </div>
-      </Card>
-      <Button variant="default">Click me</Button>
+      <CategoryList categories={categories} />
+      {/* <Button variant="default">Click me</Button> */}
     </Layout>
   );
-}
+};
 
 export default App;

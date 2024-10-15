@@ -37,6 +37,7 @@ export default {
         flex_blue: "var(--flex-blue)",
         flex_cyan: "var(--flex-cyan)",
         flex_green: "var(--flex-green)",
+        flex_darkgreen: "var(--flex-darkgreen)",
         flex_black: "var(--flex-black)",
         flex_red: "var(--flex-red)",
         flex_darkred: "var(--flex-darkred)",

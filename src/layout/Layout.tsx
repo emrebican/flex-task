@@ -10,7 +10,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <nav className="bg-flex_blue h-12 flex items-center">
         <h2 className="text-white font-semibold font-sans pl-5">Your Notes</h2>
       </nav>
-      <main>{children}</main>
+      <main className="p-2.5">{children}</main>
     </div>
   );
 };
