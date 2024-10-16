@@ -41,7 +41,8 @@ export default {
         flex_black: "var(--flex-black)",
         flex_red: "var(--flex-red)",
         flex_darkred: "var(--flex-darkred)",
-        flex_inputbg: "var(--flex-darkred)",
+        flex_inputbg: "var(--flex-inputbg)",
+        flex_ph: "var(--flex-ph)",
 
         primary: {
           DEFAULT: "hsl(var(--primary))",

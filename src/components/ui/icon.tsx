@@ -13,7 +13,7 @@ const Icon = ({ name, ...props }: IconProps) => {
 
   return (
     <Suspense fallback={fallback}>
-      <LucideIcon {...props} fill="white" className="text-white" />
+      <LucideIcon {...props} className="text-white" />
     </Suspense>
   );
 };
