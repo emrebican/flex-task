@@ -1,18 +1,18 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
+import { useCategories } from "@/context/Category.context";
 import "./CategoryList.css";
 
-import CategoryItem from "../CategoryItem/CategoryItem";
 import Card from "@/components/ui/card";
+import CategoryItem from "../CategoryItem/CategoryItem";
 import CategoryCreate from "../CategoryCreate/CategoryCreate";
-import { useCategories } from "@/context/Category.context";
-import { Outlet } from "react-router-dom";
 
 const CategoryList: React.FC = () => {
   const { categories } = useCategories();
 
   return (
-    <div className="flex gap-2.5">
-      <Card className="wrapper">
+    <div className="flex gap-2.5 flex-wrap md:flex-nowrap">
+      <Card className="h-full w-full md:w-[370px] ">
         {/* ADD NEW CATEGORY */}
         <CategoryCreate />
 

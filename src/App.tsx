@@ -1,7 +1,8 @@
-import Layout from "./layout/Layout";
-import "./App.css";
-import CategoryList from "./components/category/CategoryList/CategoryList";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import "./App.css";
+
+import Layout from "./layout/Layout";
+import CategoryList from "./components/category/CategoryList/CategoryList";
 import NoteList from "./components/note/NoteList/NoteList";
 
 const App = () => {
@@ -12,7 +13,6 @@ const App = () => {
           <Route path="/" element={<CategoryList />}>
             <Route path=":categoryId/notes" element={<NoteList />} />
           </Route>
-          {/* <CategoryList /> */}
         </Routes>
       </Router>
     </Layout>

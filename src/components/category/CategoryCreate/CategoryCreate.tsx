@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import { useCategories } from "@/context/Category.context";
 
 import Icon from "@/components/ui/icon";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
-import { useCategories } from "@/context/Category.context";
+
 import { CategoryModel } from "@/models/Category.model";
 
 const CategoryCreate: React.FC = () => {

@@ -1,0 +1,15 @@
+.loading {
+  font-weight: bold;
+  font-family: sans-serif;
+  font-size: 18px;
+  animation: l1 1s linear infinite alternate;
+  text-align: start;
+}
+.loading:before {
+  content: "Loading...";
+}
+@keyframes l1 {
+  to {
+    opacity: 0;
+  }
+}

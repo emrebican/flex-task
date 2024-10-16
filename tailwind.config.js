@@ -42,6 +42,8 @@ export default {
         flex_red: "var(--flex-red)",
         flex_darkred: "var(--flex-darkred)",
         flex_inputbg: "var(--flex-inputbg)",
+        flex_fc: "var(--flex-fc)",
+        flex_ea: "var(--flex-ea)",
         flex_ph: "var(--flex-ph)",
 
         primary: {

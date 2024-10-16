@@ -1,6 +1,6 @@
-import { CategoryModel } from "@/models/Category.model";
-import { CategoryActions, categoryReducer } from "@/reducers/Category.reducer";
 import React, { ReactNode, useContext, useEffect, useReducer } from "react";
+import { CategoryActions, categoryReducer } from "@/reducers/Category.reducer";
+import { CategoryModel } from "@/models/Category.model";
 
 interface CategoryContextType {
   categories: CategoryModel[];

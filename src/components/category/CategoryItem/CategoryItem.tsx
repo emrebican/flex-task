@@ -1,30 +1,42 @@
 import React from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./CategoryItem.css";
+
 import { CategoryModel } from "@/models/Category.model";
-import { Button } from "@/components/ui/button";
-import Icon from "@/components/ui/icon";
-import { ChevronDown } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { ChevronDown, ChevronRight, Folder } from "lucide-react";
 
 const CategoryItem: React.FC<CategoryModel> = ({ id, title, notes }) => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const isActive = location.pathname === `/${id}/notes`;
 
-  const handleCategoryRoute = () => {
+  function handleNavigate() {
     navigate(`/${id}/notes`);
-  };
+  }
 
   return (
     <li
-      className="bg-flex_cyan rounded-md flex items-center justify-between"
-      onClick={handleCategoryRoute}
+      className={`w-full md:w-[350px] ${
+        isActive ? "transparent" : "bg-flex_cyan"
+      } rounded-md flex items-center justify-between cursor-pointer`}
+      onClick={handleNavigate}
     >
-      <Icon name="folder" fill="white" />
-      <h4 className="text-white capitalize mr-auto ml-2.5">
+      <Folder
+        fill={isActive ? "black" : "white"}
+        className={isActive ? "text-black" : "text-white"}
+      />
+      <h4
+        className={`capitalize mr-auto ml-2.5 ${
+          isActive ? "text-flex_black" : "text-white"
+        }`}
+      >
         {title} ({notes.length})
       </h4>
-      <Button variant="ghost" size="icon" className="hover:bg-flex_cyan">
-        <ChevronDown color="white" fill="white" />
-      </Button>
+      {isActive ? (
+        <ChevronRight fill="black" className="text-black" />
+      ) : (
+        <ChevronDown fill="white" className="text-white" />
+      )}
     </li>
   );
 };
