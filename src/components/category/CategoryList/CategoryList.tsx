@@ -3,12 +3,12 @@ import "./CategoryList.css";
 
 import CategoryItem from "../CategoryItem/CategoryItem";
 import Card from "@/components/ui/card";
-import { CategoryModel } from "@/models/Category.model";
 import CategoryCreate from "../CategoryCreate/CategoryCreate";
+import { useCategories } from "@/context/Category.context";
 
-const CategoryList: React.FC<{ categories: CategoryModel[] }> = ({
-  categories,
-}) => {
+const CategoryList: React.FC = () => {
+  const { categories } = useCategories();
+
   return (
     <Card className="wrapper">
       {/* ADD NEW CATEGORY */}
