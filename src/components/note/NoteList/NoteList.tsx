@@ -22,7 +22,7 @@ const NoteList: React.FC = () => {
 
   // useMemo
   const selectedCategory = useMemo(
-    () => categories.find((cat) => cat.id === Number(categoryId)),
+    () => categories.find((cat) => cat.id === categoryId),
     [categories, categoryId]
   );
 
@@ -54,7 +54,12 @@ const NoteList: React.FC = () => {
     return () => clearTimeout(timeOut);
   }, [search, selectedCategory]);
 
-  if (!selectedCategory) return <div>No category found!</div>;
+  if (!selectedCategory)
+    return (
+      <div className="w-full text-muted-foreground text-center">
+        There is no notes!
+      </div>
+    );
 
   return (
     <>

@@ -1,7 +1,7 @@
 import { NoteModel } from "./Note.model";
 
 export interface CategoryModel {
-  id: number;
+  id?: string;
   title: string;
   notes: NoteModel[];
 }

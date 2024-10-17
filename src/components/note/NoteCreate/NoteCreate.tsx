@@ -6,6 +6,8 @@ import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
 import React, { useEffect, useRef, useState } from "react";
 
+import { v4 as uuidV4 } from "uuid";
+
 const NoteCreate: React.FC = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -24,7 +26,7 @@ const NoteCreate: React.FC = () => {
     if (!title.trim() || !content.trim()) return;
 
     const newNote = {
-      id: Date.now(),
+      id: uuidV4(),
       title,
       content,
     };

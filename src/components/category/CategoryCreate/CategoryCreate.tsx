@@ -13,7 +13,6 @@ const CategoryCreate: React.FC = () => {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [isCreate, setIsCreate] = useState(false);
   const [newCategory, setNewCategory] = useState<CategoryModel>({
-    id: Date.now(),
     title: "",
     notes: [],
   });
@@ -28,7 +27,6 @@ const CategoryCreate: React.FC = () => {
     if (newCategory.title.trim()) {
       dispatch({ type: "CREATE_CATEGORY", payload: newCategory });
       setNewCategory({
-        id: Date.now(),
         title: "",
         notes: [],
       });
@@ -36,7 +34,7 @@ const CategoryCreate: React.FC = () => {
   }
 
   return (
-    <div className="mb-2.5">
+    <div>
       {isCreate ? (
         <form
           onSubmit={onCreate}
