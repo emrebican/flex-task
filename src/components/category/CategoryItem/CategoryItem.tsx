@@ -8,7 +8,9 @@ import { ChevronDown, ChevronRight, Folder } from "lucide-react";
 const CategoryItem: React.FC<CategoryModel> = ({ id, title, notes }) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const isActive = location.pathname === `/${id}/notes`;
+  const isActive =
+    location.pathname === `/${id}/notes` ||
+    location.pathname === `/${id}/note-create`;
 
   function handleNavigate() {
     navigate(`/${id}/notes`);
@@ -23,17 +25,17 @@ const CategoryItem: React.FC<CategoryModel> = ({ id, title, notes }) => {
     >
       <Folder
         fill={isActive ? "black" : "white"}
-        className={isActive ? "text-black" : "text-white"}
+        className={isActive ? "black" : "text-white"}
       />
       <h4
         className={`capitalize mr-auto ml-2.5 ${
-          isActive ? "text-flex_black" : "text-white"
+          isActive ? "text-black" : "text-white"
         }`}
       >
         {title} ({notes.length})
       </h4>
       {isActive ? (
-        <ChevronRight fill="black" className="text-black" />
+        <ChevronRight fill="black" className="black" />
       ) : (
         <ChevronDown fill="white" className="text-white" />
       )}

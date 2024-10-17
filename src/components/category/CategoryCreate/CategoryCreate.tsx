@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useCategories } from "@/context/Category.context";
 
 import Icon from "@/components/ui/icon";
@@ -10,12 +10,17 @@ import { CategoryModel } from "@/models/Category.model";
 
 const CategoryCreate: React.FC = () => {
   const { dispatch } = useCategories();
+  const inputRef = useRef<HTMLInputElement | null>(null);
   const [isCreate, setIsCreate] = useState(false);
   const [newCategory, setNewCategory] = useState<CategoryModel>({
     id: Date.now(),
     title: "",
     notes: [],
   });
+
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, [isCreate]);
 
   function onCreate(event: React.FormEvent) {
     event.preventDefault();
@@ -41,6 +46,7 @@ const CategoryCreate: React.FC = () => {
             type="text"
             placeholder="Add a title..."
             className="bg-flex_inputbg border-none"
+            ref={inputRef}
             value={newCategory.title}
             onChange={(event) =>
               setNewCategory({ ...newCategory, title: event.target.value })

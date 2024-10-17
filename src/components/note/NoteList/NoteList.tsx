@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useCategories } from "@/context/Category.context";
 
 import Card from "@/components/ui/card";
@@ -7,9 +7,13 @@ import { Input } from "@/components/ui/input";
 import Loading from "@/components/ui/Loading/loading";
 
 import NoteItem from "../NoteItem/NoteItem";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import Icon from "@/components/ui/icon";
 import NoteCreate from "../NoteCreate/NoteCreate";
 
 const NoteList: React.FC = () => {
+  const navigate = useNavigate();
   const { categoryId } = useParams();
   const { categories } = useCategories();
 
@@ -53,15 +57,27 @@ const NoteList: React.FC = () => {
   if (!selectedCategory) return <div>No category found!</div>;
 
   return (
-    <Card className="grow">
+    <>
       {selectedCategory.notes.length === 0 ? (
-        <p className="text-muted-foreground">
-          There is no notes for this category.
-        </p>
+        <NoteCreate />
       ) : (
-        <>
+        <Card className="grow">
           <div className="max-w-[480px] flex items-center gap-2.5 mb-5">
-            <NoteCreate />
+            {/* <NoteCreate /> */}
+            <div>
+              <Button
+                className="w-[218px] bg-flex_green flex justify-between py-0 px-2 hover:bg-flex_darkgreen"
+                onClick={() => navigate(`/${categoryId}/note-create`)}
+              >
+                <span className="grow">Create Note</span>
+                <Separator
+                  orientation="vertical"
+                  className="h-full mr-1 bg-flex_darkgreen"
+                />
+                <Icon name="plus" />
+              </Button>
+            </div>
+            {/* Search notes */}
             <Input
               type="text"
               placeholder="Search..."
@@ -82,9 +98,9 @@ const NoteList: React.FC = () => {
               ))}
             </ul>
           )}
-        </>
+        </Card>
       )}
-    </Card>
+    </>
   );
 };
 
