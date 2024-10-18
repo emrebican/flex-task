@@ -1,11 +1,14 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 import { useCategories } from "@/context/Category.context";
 import "./CategoryList.css";
 
-import CategoryItem from "../CategoryItem/CategoryItem";
+// import CategoryItem from "../CategoryItem/CategoryItem";
 import Card from "@/components/ui/card";
 import CategoryCreate from "../CategoryCreate/CategoryCreate";
+import Loading from "@/components/ui/Loading/Loading";
+
+const CategoryItem = React.lazy(() => import("../CategoryItem/CategoryItem"));
 
 const CategoryList: React.FC = () => {
   const { categories } = useCategories();
@@ -22,14 +25,16 @@ const CategoryList: React.FC = () => {
             categories.length ? "mt-2.5" : null
           }`}
         >
-          {categories.map((item) => (
-            <CategoryItem
-              key={item.id}
-              id={item.id}
-              title={item.title}
-              notes={item.notes}
-            />
-          ))}
+          <Suspense fallback={<Loading />}>
+            {categories.map((item) => (
+              <CategoryItem
+                key={item.id}
+                id={item.id}
+                title={item.title}
+                notes={item.notes}
+              />
+            ))}
+          </Suspense>
         </ul>
       </Card>
 
