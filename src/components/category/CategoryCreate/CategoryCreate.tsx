@@ -11,6 +11,7 @@ import { CategoryModel } from "@/models/Category.model";
 const CategoryCreate: React.FC = () => {
   const { dispatch } = useCategories();
   const inputRef = useRef<HTMLInputElement | null>(null);
+
   const [isCreate, setIsCreate] = useState(false);
   const [newCategory, setNewCategory] = useState<CategoryModel>({
     title: "",
@@ -26,6 +27,7 @@ const CategoryCreate: React.FC = () => {
 
     if (newCategory.title.trim()) {
       dispatch({ type: "CREATE_CATEGORY", payload: newCategory });
+      setIsCreate(false);
       setNewCategory({
         title: "",
         notes: [],

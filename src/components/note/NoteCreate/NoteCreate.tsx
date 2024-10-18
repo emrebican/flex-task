@@ -4,15 +4,18 @@ import Icon from "@/components/ui/icon";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
+import { useCategories } from "@/context/Category.context";
 import React, { useEffect, useRef, useState } from "react";
-
-import { v4 as uuidV4 } from "uuid";
+import { useNavigate, useParams } from "react-router-dom";
 
 const NoteCreate: React.FC = () => {
+  const titleInputRef = useRef<HTMLInputElement | null>(null);
+  const { categoryId } = useParams();
+  const navigate = useNavigate();
+  const { dispatch } = useCategories();
+
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-
-  const titleInputRef = useRef<HTMLInputElement | null>(null);
 
   const isFormValid = title.trim() !== "" && content.trim() !== "";
 
@@ -26,18 +29,36 @@ const NoteCreate: React.FC = () => {
     if (!title.trim() || !content.trim()) return;
 
     const newNote = {
-      id: uuidV4(),
       title,
       content,
     };
 
     console.log(newNote);
+    dispatch({
+      type: "CREATE_NOTE",
+      payload: { categoryId: categoryId as string, note: newNote },
+    });
+
     setTitle("");
     setContent("");
+    navigateBack();
+  }
+
+  function navigateBack() {
+    navigate(`/${categoryId}/notes`);
   }
 
   return (
     <Card className="grow relative">
+      <Button
+        type="button"
+        size="icon"
+        className="bg-flex_cyan hover:bg-flex_blue p-2 absolute right-5 top-5"
+        onClick={navigateBack}
+      >
+        <Icon name="x" fill="none" />
+      </Button>
+
       <form onSubmit={onCreate}>
         <Input
           type="text"

@@ -1,16 +1,16 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Outlet, useNavigate, useParams } from "react-router-dom";
 import { useCategories } from "@/context/Category.context";
 
 import Card from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import Loading from "@/components/ui/Loading/loading";
 
 import NoteItem from "../NoteItem/NoteItem";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import Icon from "@/components/ui/icon";
 import NoteCreate from "../NoteCreate/NoteCreate";
+import Loading from "@/components/ui/Loading/Loading";
 
 const NoteList: React.FC = () => {
   const navigate = useNavigate();
@@ -62,50 +62,59 @@ const NoteList: React.FC = () => {
     );
 
   return (
-    <>
+    <React.Fragment>
       {selectedCategory.notes.length === 0 ? (
         <NoteCreate />
       ) : (
-        <Card className="grow">
-          <div className="max-w-[480px] flex items-center gap-2.5 mb-5">
-            {/* <NoteCreate /> */}
-            <div>
-              <Button
-                className="w-[218px] bg-flex_green flex justify-between py-0 px-2 hover:bg-flex_darkgreen"
-                onClick={() => navigate(`/${categoryId}/note-create`)}
-              >
-                <span className="grow">Create Note</span>
-                <Separator
-                  orientation="vertical"
-                  className="h-full mr-1 bg-flex_darkgreen"
-                />
-                <Icon name="plus" />
-              </Button>
+        <div className="w-full flex flex-wrap gap-2.5">
+          <Card className="grow flex-1 min-w-[450px]">
+            <div className="max-w-[480px] flex items-center gap-2.5 mb-5">
+              {/* <NoteCreate /> */}
+              <div>
+                <Button
+                  className="w-[218px] bg-flex_green flex justify-between py-0 px-2 hover:bg-flex_darkgreen"
+                  onClick={() => navigate(`/${categoryId}/note-create`)}
+                >
+                  <span className="grow">Create Note</span>
+                  <Separator
+                    orientation="vertical"
+                    className="h-full mr-1 bg-flex_darkgreen"
+                  />
+                  <Icon name="plus" />
+                </Button>
+              </div>
+              {/* Search notes */}
+              <Input
+                type="text"
+                placeholder="Search..."
+                className="bg-flex_fc placeholder:text-flex_ea border-flex_ea font-semibold"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
             </div>
-            {/* Search notes */}
-            <Input
-              type="text"
-              placeholder="Search..."
-              className="bg-flex_fc placeholder:text-flex_ea border-flex_ea font-semibold"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-          </div>
 
-          {isLoading ? (
-            <Loading />
-          ) : filteredNotes.length === 0 ? (
-            <p className="text-muted-foreground">No notes found.</p>
-          ) : (
-            <ul className="flex flex-col gap-4">
-              {filteredNotes.map((note) => (
-                <NoteItem key={note.id} note={note} />
-              ))}
-            </ul>
-          )}
-        </Card>
+            {isLoading ? (
+              <Loading />
+            ) : filteredNotes.length === 0 ? (
+              <p className="text-muted-foreground">No notes found.</p>
+            ) : (
+              <ul className="flex flex-col">
+                {filteredNotes.map((note, index) => (
+                  <React.Fragment key={note.id}>
+                    <NoteItem note={note} />
+                    {index < categories.length - 1 && (
+                      <Separator className="my-2" />
+                    )}
+                  </React.Fragment>
+                ))}
+              </ul>
+            )}
+          </Card>
+          {/* Note Detail */}
+          <Outlet />
+        </div>
       )}
-    </>
+    </React.Fragment>
   );
 };
 
