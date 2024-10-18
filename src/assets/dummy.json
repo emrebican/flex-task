@@ -1,0 +1,161 @@
+[
+  {
+    "id": "11f7c2fb-94bc-45b1-af54-79f2ea059480aa",
+    "title": "Meeting Notes",
+    "notes": [
+      {
+        "id": "4c334ec2-5ff7-4fa2-9a5c-1d76ca7a720ea",
+        "title": "Project Kickoff",
+        "content": "Discussed project goals, deliverables, and timelines with the team."
+      }
+    ]
+  },
+  {
+    "id": "c2ff883c-3273-4851-940f-0de99c99223fa",
+    "title": "Research Ideas",
+    "notes": [
+      {
+        "id": "e8f73dc0-1858-42c5-ad17-660c54d1dccbaa",
+        "title": "AI in Healthcare",
+        "content": "Exploring the impact of AI in early disease detection and personalized treatment."
+      }
+    ]
+  },
+  {
+    "id": "401f6eb0-4452-4af1-b0cd-8d1f8500eb94a",
+    "title": "Client Feedback",
+    "notes": [
+      {
+        "id": "6be3622a-3508-47db-876e-30a93a9c6f19a",
+        "title": "Feedback on Design",
+        "content": "The client likes the new design, but requested some changes to the color scheme."
+      }
+    ]
+  },
+  {
+    "id": "1cd1eda8-57ee-4cd0-815d-692d6e296604a",
+    "title": "Personal Goals",
+    "notes": []
+  },
+  {
+    "id": "43c89e6c-9352-40f6-acdd-254f92dd7ff2",
+    "title": "Book Reviews",
+    "notes": [
+      {
+        "id": "3735ab55-9dbe-4646-85ee-9f5fb72c4cf6",
+        "title": "Atomic Habits",
+        "content": "A great read on building effective habits through small, incremental changes."
+      }
+    ]
+  },
+  {
+    "id": "12d7c7b3-8fa7-4d5b-835d-7834ecaf5af6",
+    "title": "Travel Plans",
+    "notes": [
+      {
+        "id": "7d925ec1-3b14-497b-89b2-4b78412af1d9",
+        "title": "Summer Vacation",
+        "content": "Planning a trip to Italy. Visit Rome, Florence, and Venice."
+      }
+    ]
+  },
+  {
+    "id": "89f7e0a8-b06e-4c6e-8b4e-55ddc9d52e2b",
+    "title": "Work Tasks",
+    "notes": [
+      {
+        "id": "e58d7e33-69cc-4b8c-96b5-0809bc2ec72f",
+        "title": "Q4 Report",
+        "content": "Prepare the quarterly report by the end of the week. Include sales and marketing data."
+      }
+    ]
+  },
+  {
+    "id": "ae635d13-31e1-4b94-a3e2-5ccf38b00ccf",
+    "title": "Movies to Watch",
+    "notes": [
+      {
+        "id": "f014ce04-c846-4c4f-9772-18cc4f5d0e18",
+        "title": "Inception",
+        "content": "Rewatch for understanding deeper plot details."
+      }
+    ]
+  },
+  {
+    "id": "c4a9dabb-569a-4d94-b2e2-601fabbfbcfc",
+    "title": "Shopping List",
+    "notes": [
+      {
+        "id": "dbf2e773-3bc4-4d52-8482-85db7c39e1c1",
+        "title": "Groceries",
+        "content": "Milk, Eggs, Bread, Chicken, Vegetables"
+      }
+    ]
+  },
+  {
+    "id": "4c80b503-f874-44a7-a747-2f5c5b9f46a8",
+    "title": "Fitness Goals",
+    "notes": [
+      {
+        "id": "be1074bb-c0f7-45d4-9dc9-8d1f5a4770f9",
+        "title": "Running",
+        "content": "Run 5km every other day, aiming to improve speed and stamina."
+      }
+    ]
+  },
+  {
+    "id": "de3ff3a2-48a5-42ba-b8db-178caf2f9e34",
+    "title": "Programming Notes",
+    "notes": [
+      {
+        "id": "b4cbbe8c-d6f6-4264-8653-3a2e4e0af0ad",
+        "title": "React Tips",
+        "content": "Use hooks for state management. Explore the Context API for global state."
+      }
+    ]
+  },
+  {
+    "id": "f4d916e3-6066-46b8-b13a-3998a78e6273",
+    "title": "Recipe Ideas",
+    "notes": [
+      {
+        "id": "a9df84bc-1c8d-4625-97f0-5a3a0fa46a70",
+        "title": "Pasta Carbonara",
+        "content": "Classic Italian dish made with eggs, cheese, pancetta, and pepper."
+      }
+    ]
+  },
+  {
+    "id": "bc8f0f34-5b8c-4a0b-8653-3bb5f174f93d",
+    "title": "Event Planning",
+    "notes": [
+      {
+        "id": "bfb2d5ae-c78e-4fda-b474-c1a339cc0b2d",
+        "title": "Company Party",
+        "content": "Organizing an end-of-year party for the team. Book venue, catering, and entertainment."
+      }
+    ]
+  },
+  {
+    "id": "e03d77b9-bdda-45f7-9f6e-287b2fc2a1ab",
+    "title": "Learning Goals",
+    "notes": [
+      {
+        "id": "9b2f327d-c3c5-414b-9c4d-6c3d3e75c902",
+        "title": "New Language",
+        "content": "Practice speaking Albanian daily for 30 minutes."
+      }
+    ]
+  },
+  {
+    "id": "efa1d334-2b44-4b8d-ae10-f8ff1e1c2a10",
+    "title": "Health Notes",
+    "notes": [
+      {
+        "id": "32db2a1a-79f4-468b-a889-3f378a2f50fa",
+        "title": "Nutrition",
+        "content": "Increase intake of protein and vegetables. Reduce sugar consumption."
+      }
+    ]
+  }
+]

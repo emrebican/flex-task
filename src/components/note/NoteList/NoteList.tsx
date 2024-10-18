@@ -8,9 +8,9 @@ import { Input } from "@/components/ui/input";
 import NoteItem from "../NoteItem/NoteItem";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import Icon from "@/components/ui/icon";
 import NoteCreate from "../NoteCreate/NoteCreate";
 import Loading from "@/components/ui/Loading/Loading";
+import { Plus } from "lucide-react";
 
 const NoteList: React.FC = () => {
   const navigate = useNavigate();
@@ -66,10 +66,10 @@ const NoteList: React.FC = () => {
       {selectedCategory.notes.length === 0 ? (
         <NoteCreate />
       ) : (
-        <div className="w-full flex flex-wrap gap-2.5">
-          <Card className="grow flex-1 min-w-[450px]">
+        <div className="w-full flex flex-wrap gap-5 md:gap-2.5">
+          <Card className="grow flex-1 min-w-[350px] ">
             <div className="max-w-[480px] flex items-center gap-2.5 mb-5">
-              {/* <NoteCreate /> */}
+              {/* Create Note */}
               <div>
                 <Button
                   className="w-[218px] bg-flex_green flex justify-between py-0 px-2 hover:bg-flex_darkgreen"
@@ -80,7 +80,7 @@ const NoteList: React.FC = () => {
                     orientation="vertical"
                     className="h-full mr-1 bg-flex_darkgreen"
                   />
-                  <Icon name="plus" />
+                  <Plus />
                 </Button>
               </div>
               {/* Search notes */}

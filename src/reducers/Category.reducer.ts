@@ -1,17 +1,25 @@
+import { ActionsEnum } from "@/constants/actions.constants";
 import { CategoryModel } from "@/models/Category.model";
 import { NoteModel } from "@/models/Note.model";
 import { v4 as uuidV4 } from "uuid";
 
 export type CategoryActions =
   | {
-      type: "CREATE_CATEGORY";
+      type: ActionsEnum.CREATE_CATEGORY;
       payload: CategoryModel;
     }
-  | { type: "REMOVE_CATEGORY"; id: string }
-  | { type: "CREATE_NOTE"; payload: { categoryId: string; note: NoteModel } }
+  | { type: ActionsEnum.REMOVE_CATEGORY; id: string }
   | {
-      type: "REMOVE_NOTE";
+      type: ActionsEnum.CREATE_NOTE;
+      payload: { categoryId: string; note: NoteModel };
+    }
+  | {
+      type: ActionsEnum.REMOVE_NOTE;
       payload: { categoryId: string; noteId: string };
+    }
+  | {
+      type: ActionsEnum.UPDATE_NOTE;
+      payload: { categoryId: string; noteId: string; note: NoteModel };
     };
 
 export const categoryReducer = (
@@ -19,32 +27,51 @@ export const categoryReducer = (
   action: CategoryActions
 ) => {
   switch (action.type) {
-    case "CREATE_CATEGORY":
+    case ActionsEnum.CREATE_CATEGORY:
       return [...state, { id: uuidV4(), ...action.payload }];
 
-    case "REMOVE_CATEGORY":
-      return state.filter((item: CategoryModel) => item.id !== action.id);
-
-    case "CREATE_NOTE":
-      return state.map((item: CategoryModel) =>
-        item.id === action.payload.categoryId
-          ? {
-              ...item,
-              notes: [...item.notes, { id: uuidV4(), ...action.payload.note }],
-            }
-          : item
+    case ActionsEnum.REMOVE_CATEGORY:
+      return state.filter(
+        (category: CategoryModel) => category.id !== action.id
       );
 
-    case "REMOVE_NOTE":
-      return state.map((item: CategoryModel) =>
-        item.id === action.payload.categoryId
+    case ActionsEnum.CREATE_NOTE:
+      return state.map((category: CategoryModel) =>
+        category.id === action.payload.categoryId
           ? {
-              ...item,
-              notes: item.notes.filter(
+              ...category,
+              notes: [
+                ...category.notes,
+                { id: uuidV4(), ...action.payload.note },
+              ],
+            }
+          : category
+      );
+
+    case ActionsEnum.REMOVE_NOTE:
+      return state.map((category: CategoryModel) =>
+        category.id === action.payload.categoryId
+          ? {
+              ...category,
+              notes: category.notes.filter(
                 (note) => note.id !== action.payload.noteId
               ),
             }
-          : item
+          : category
+      );
+
+    case ActionsEnum.UPDATE_NOTE:
+      return state.map((category: CategoryModel) =>
+        category.id === action.payload.categoryId
+          ? {
+              ...category,
+              notes: category.notes.map((note) =>
+                note.id === action.payload.noteId
+                  ? { ...note, ...action.payload.note }
+                  : note
+              ),
+            }
+          : category
       );
 
     default:

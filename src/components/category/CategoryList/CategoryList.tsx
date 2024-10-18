@@ -14,12 +14,16 @@ const CategoryList: React.FC = () => {
   const { categories } = useCategories();
 
   return (
-    <div className="flex gap-2.5 flex-wrap md:flex-nowrap">
-      <Card className="h-full w-full md:w-[370px]">
+    <div
+      className="flex gap-2.5 flex-wrap md:flex-nowrap"
+      style={{ height: "calc(100vh - 78px)" }}
+    >
+      <Card className="h-full w-full md:w-[480px] overflow-x-hidden overflow-y-scroll">
         {/* ADD NEW CATEGORY */}
         <CategoryCreate />
 
         {/* CATEGORY LIST */}
+
         <ul
           className={`flex flex-col gap-2.5 ${
             categories.length ? "mt-2.5" : null

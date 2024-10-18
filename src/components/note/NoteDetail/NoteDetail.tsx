@@ -1,17 +1,19 @@
 import { Button } from "@/components/ui/button";
 import Card from "@/components/ui/card";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
-import Icon from "@/components/ui/icon";
 import { Separator } from "@/components/ui/separator";
 import { useCategories } from "@/context/Category.context";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import NoteUpdate from "../NoteUpdate/NoteUpdate";
+import { ActionsEnum } from "@/constants/actions.constants";
+import { Check, Trash, X } from "lucide-react";
 
 const NoteDetail: React.FC = () => {
   const navigate = useNavigate();
   const { categoryId, noteId } = useParams();
   const { categories, dispatch } = useCategories();
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const category = categories.find((category) => category.id === categoryId);
   const noteDetail = category?.notes.find((note) => note.id === noteId);
@@ -23,7 +25,7 @@ const NoteDetail: React.FC = () => {
   function onDelete() {
     if (categoryId && noteId) {
       dispatch({
-        type: "REMOVE_NOTE",
+        type: ActionsEnum.REMOVE_NOTE,
         payload: { categoryId, noteId },
       });
       navigateBack();
@@ -57,10 +59,10 @@ const NoteDetail: React.FC = () => {
               orientation="vertical"
               className="h-full mr-1 bg-flex_darkred"
             />
-            <Icon name="trash" fill="white" />
+            <Trash fill="white" />
           </Button>
 
-          <Dialog>
+          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
               <Button
                 type="button"
@@ -71,11 +73,16 @@ const NoteDetail: React.FC = () => {
                   orientation="vertical"
                   className="h-full mr-1 bg-flex_darkgreen"
                 />
-                <Icon name="check" />
+                <Check />
               </Button>
             </DialogTrigger>
 
-            <NoteUpdate noteDetail={noteDetail} />
+            {isDialogOpen && (
+              <NoteUpdate
+                noteDetail={noteDetail}
+                closeDialog={() => setIsDialogOpen(false)}
+              />
+            )}
           </Dialog>
         </div>
       </div>
@@ -86,7 +93,7 @@ const NoteDetail: React.FC = () => {
         className="bg-flex_cyan hover:bg-flex_blue p-2 absolute right-5 top-5"
         onClick={navigateBack}
       >
-        <Icon name="x" fill="none" />
+        <X />
       </Button>
     </Card>
   );

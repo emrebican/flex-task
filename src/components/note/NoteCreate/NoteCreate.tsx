@@ -1,10 +1,11 @@
 import { Button } from "@/components/ui/button";
 import Card from "@/components/ui/card";
-import Icon from "@/components/ui/icon";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
+import { ActionsEnum } from "@/constants/actions.constants";
 import { useCategories } from "@/context/Category.context";
+import { Check, X } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -35,7 +36,7 @@ const NoteCreate: React.FC = () => {
 
     console.log(newNote);
     dispatch({
-      type: "CREATE_NOTE",
+      type: ActionsEnum.CREATE_NOTE,
       payload: { categoryId: categoryId as string, note: newNote },
     });
 
@@ -56,7 +57,7 @@ const NoteCreate: React.FC = () => {
         className="bg-flex_cyan hover:bg-flex_blue p-2 absolute right-5 top-5"
         onClick={navigateBack}
       >
-        <Icon name="x" fill="none" />
+        <X fill="none" />
       </Button>
 
       <form onSubmit={onCreate} className="h-full">
@@ -73,7 +74,7 @@ const NoteCreate: React.FC = () => {
 
         <Textarea
           placeholder="Write your note here..."
-          style={{height: 'calc(100% - 120px)'}}
+          style={{ height: "calc(100% - 120px)" }}
           className="p-0 pl-3.5 mb-[80px] border-none shadow-none focus-visible:ring-0"
           value={content}
           onChange={(e) => setContent(e.target.value)}
@@ -89,7 +90,7 @@ const NoteCreate: React.FC = () => {
             orientation="vertical"
             className="h-full mr-1 bg-flex_darkgreen"
           />
-          <Icon name="check" />
+          <Check />
         </Button>
       </form>
     </Card>

@@ -1,6 +1,7 @@
 import React, { ReactNode, useContext, useEffect, useReducer } from "react";
 import { CategoryActions, categoryReducer } from "@/reducers/Category.reducer";
 import { CategoryModel } from "@/models/Category.model";
+import dummyData from "../assets/dummy.json";
 
 interface CategoryContextType {
   categories: CategoryModel[];
@@ -16,7 +17,7 @@ export const CategoryProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const [categories, dispatch] = useReducer(categoryReducer, [], () => {
     const storedCategories = localStorage.getItem("categories");
-    return storedCategories ? JSON.parse(storedCategories) : [];
+    return storedCategories ? JSON.parse(storedCategories) : dummyData;
   });
 
   useEffect(() => {

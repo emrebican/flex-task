@@ -8,7 +8,9 @@ import { ChevronDown, ChevronRight, Folder } from "lucide-react";
 const CategoryItem: React.FC<CategoryModel> = ({ id, title, notes }) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const isActive = location.pathname === `/${id}/notes` || location.pathname === `/${id}/note-create`;
+  const isActive =
+    location.pathname === `/${id}/notes` ||
+    location.pathname === `/${id}/note-create`;
 
   function handleNavigate() {
     navigate(`/${id}/notes`);
@@ -16,7 +18,7 @@ const CategoryItem: React.FC<CategoryModel> = ({ id, title, notes }) => {
 
   return (
     <li
-      className={`w-full md:w-[350px] ${
+      className={`w-full  ${
         isActive ? "transparent" : "bg-flex_cyan"
       } rounded-md flex items-center justify-between cursor-pointer`}
       onClick={handleNavigate}

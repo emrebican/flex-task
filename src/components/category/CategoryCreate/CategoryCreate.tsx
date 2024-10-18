@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useCategories } from "@/context/Category.context";
 
-import Icon from "@/components/ui/icon";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 
 import { CategoryModel } from "@/models/Category.model";
+import { ActionsEnum } from "@/constants/actions.constants";
+import { Check, Plus, X } from "lucide-react";
 
 const CategoryCreate: React.FC = () => {
   const { dispatch } = useCategories();
@@ -26,13 +27,21 @@ const CategoryCreate: React.FC = () => {
     event.preventDefault();
 
     if (newCategory.title.trim()) {
-      dispatch({ type: "CREATE_CATEGORY", payload: newCategory });
+      dispatch({ type: ActionsEnum.CREATE_CATEGORY, payload: newCategory });
       setIsCreate(false);
       setNewCategory({
         title: "",
         notes: [],
       });
     }
+  }
+
+  function onCancel() {
+    setIsCreate(false);
+    setNewCategory({
+      title: "",
+      notes: [],
+    });
   }
 
   return (
@@ -57,15 +66,15 @@ const CategoryCreate: React.FC = () => {
             size="icon"
             className="bg-flex_green hover:bg-flex_darkgreen p-2"
           >
-            <Icon name="check" fill="none" />
+            <Check />
           </Button>
           <Button
             type="button"
             size="icon"
             className="bg-flex_red hover:bg-flex_darkred p-2"
-            onClick={() => setIsCreate(false)}
+            onClick={onCancel}
           >
-            <Icon name="x" fill="none" />
+            <X />
           </Button>
         </form>
       ) : (
@@ -78,7 +87,7 @@ const CategoryCreate: React.FC = () => {
             orientation="vertical"
             className="h-full mr-1 bg-flex_darkgreen"
           />
-          <Icon name="plus" />
+          <Plus />
         </Button>
       )}
     </div>
