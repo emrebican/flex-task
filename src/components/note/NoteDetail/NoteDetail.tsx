@@ -1,10 +1,12 @@
 import { Button } from "@/components/ui/button";
 import Card from "@/components/ui/card";
+import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import Icon from "@/components/ui/icon";
 import { Separator } from "@/components/ui/separator";
 import { useCategories } from "@/context/Category.context";
 import React, { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import NoteUpdate from "../NoteUpdate/NoteUpdate";
 
 const NoteDetail: React.FC = () => {
   const navigate = useNavigate();
@@ -58,17 +60,23 @@ const NoteDetail: React.FC = () => {
             <Icon name="trash" fill="white" />
           </Button>
 
-          <Button
-            type="submit"
-            className="bg-flex_green flex justify-between py-0 pl-4 pr-2 hover:bg-flex_darkgreen"
-          >
-            <span className="grow pr-4">Save Changes</span>
-            <Separator
-              orientation="vertical"
-              className="h-full mr-1 bg-flex_darkgreen"
-            />
-            <Icon name="check" />
-          </Button>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button
+                type="button"
+                className="bg-flex_green flex justify-between py-0 pl-4 pr-2 hover:bg-flex_darkgreen"
+              >
+                <span className="grow pr-4">Edit Note</span>
+                <Separator
+                  orientation="vertical"
+                  className="h-full mr-1 bg-flex_darkgreen"
+                />
+                <Icon name="check" />
+              </Button>
+            </DialogTrigger>
+
+            <NoteUpdate noteDetail={noteDetail} />
+          </Dialog>
         </div>
       </div>
 
