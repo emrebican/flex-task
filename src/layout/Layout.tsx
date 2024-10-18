@@ -1,3 +1,4 @@
+import { Toaster } from "@/components/ui/Toaster/toaster";
 import React, { ReactNode } from "react";
 
 interface LayoutProps {
@@ -11,6 +12,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <h2 className="text-white font-semibold font-sans pl-5">Your Notes</h2>
       </nav>
       <main className="p-2.5">{children}</main>
+      <Toaster />
     </div>
   );
 };

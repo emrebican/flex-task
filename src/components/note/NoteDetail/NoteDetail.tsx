@@ -8,8 +8,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import NoteUpdate from "../NoteUpdate/NoteUpdate";
 import { ActionsEnum } from "@/constants/actions.constants";
 import { Check, Trash, X } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 const NoteDetail: React.FC = () => {
+  const { toast } = useToast();
   const navigate = useNavigate();
   const { categoryId, noteId } = useParams();
   const { categories, dispatch } = useCategories();
@@ -29,6 +31,11 @@ const NoteDetail: React.FC = () => {
         payload: { categoryId, noteId },
       });
       navigateBack();
+      toast({
+        variant: "destructive",
+        title: "Note",
+        description: "Note deleted.",
+      });
     }
   }
 

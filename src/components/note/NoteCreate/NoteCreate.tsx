@@ -5,11 +5,13 @@ import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
 import { ActionsEnum } from "@/constants/actions.constants";
 import { useCategories } from "@/context/Category.context";
+import { useToast } from "@/hooks/use-toast";
 import { Check, X } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 const NoteCreate: React.FC = () => {
+  const { toast } = useToast();
   const titleInputRef = useRef<HTMLInputElement | null>(null);
   const { categoryId } = useParams();
   const navigate = useNavigate();
@@ -43,6 +45,10 @@ const NoteCreate: React.FC = () => {
     setTitle("");
     setContent("");
     navigateBack();
+    toast({
+      title: "Note",
+      description: "A new note created.",
+    });
   }
 
   function navigateBack() {
@@ -50,7 +56,7 @@ const NoteCreate: React.FC = () => {
   }
 
   return (
-    <Card className="grow relative">
+    <Card className="grow relative w-full">
       <Button
         type="button"
         size="icon"

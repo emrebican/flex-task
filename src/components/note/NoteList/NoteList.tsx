@@ -67,7 +67,7 @@ const NoteList: React.FC = () => {
         <NoteCreate />
       ) : (
         <div className="w-full flex flex-wrap gap-5 md:gap-2.5">
-          <Card className="grow flex-1 min-w-[350px] ">
+          <Card className="grow flex-1 min-w-[350px]">
             <div className="max-w-[480px] flex items-center gap-2.5 mb-5">
               {/* Create Note */}
               <div>

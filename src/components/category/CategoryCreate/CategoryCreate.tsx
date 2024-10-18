@@ -8,8 +8,10 @@ import { Separator } from "@/components/ui/separator";
 import { CategoryModel } from "@/models/Category.model";
 import { ActionsEnum } from "@/constants/actions.constants";
 import { Check, Plus, X } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 const CategoryCreate: React.FC = () => {
+  const { toast } = useToast();
   const { dispatch } = useCategories();
   const inputRef = useRef<HTMLInputElement | null>(null);
 
@@ -32,6 +34,11 @@ const CategoryCreate: React.FC = () => {
       setNewCategory({
         title: "",
         notes: [],
+      });
+
+      toast({
+        title: "Category",
+        description: "A new category created.",
       });
     }
   }

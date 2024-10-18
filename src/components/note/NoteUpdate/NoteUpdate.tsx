@@ -13,11 +13,13 @@ import { NoteModel } from "@/models/Note.model";
 import { useCategories } from "@/context/Category.context";
 import { ActionsEnum } from "@/constants/actions.constants";
 import { useParams } from "react-router-dom";
+import { useToast } from "@/hooks/use-toast";
 
 const NoteUpdate: React.FC<{
   noteDetail?: NoteModel;
   closeDialog: () => void;
 }> = ({ noteDetail, closeDialog }) => {
+  const { toast } = useToast();
   const { dispatch } = useCategories();
   const { categoryId, noteId } = useParams();
 
@@ -53,6 +55,10 @@ const NoteUpdate: React.FC<{
     });
 
     closeDialog();
+    toast({
+      title: "Note",
+      description: "Note updated.",
+    });
   }
 
   return (
