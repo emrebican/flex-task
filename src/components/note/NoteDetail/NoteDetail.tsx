@@ -36,11 +36,11 @@ const NoteDetail: React.FC = () => {
     <Card className="flex-1 relative p-5">
       <div className="flex flex-col h-full">
         <>
-          <header className="font-semibold text-black">
+          <header className="font-semibold text-black mr-9">
             {noteDetail?.title}
           </header>
           <Separator className="my-5" />
-          <p className="font-normal text-black">{noteDetail?.content}</p>
+          <p className="font-normal text-black mb-4">{noteDetail?.content}</p>
         </>
 
         {/* Action Buttons */}

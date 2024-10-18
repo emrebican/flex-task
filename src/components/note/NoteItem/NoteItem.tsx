@@ -16,12 +16,12 @@ const NoteItem: React.FC<{ note: NoteModel }> = ({ note }) => {
   return (
     <div
       onClick={handleNavigate}
-      className={`p-0 cursor-pointer mt-2 ${
+      className={`p-0 cursor-pointer pt-2 ml-1 inline-block w-[200px]" ${
         isActive ? "bg-flex_bglight" : "bg-transparent"
       }`}
     >
-      <h4 className="font-semibold text-black">{note.title}</h4>
-      <p className="text-black">{note.content}</p>
+      <h4 className="px-2 font-semibold text-black line-clamp-1">{note.title}</h4>
+      <p className="px-2 text-black line-clamp-1">{note.content}</p>
       <hr className="mt-2" />
     </div>
   );

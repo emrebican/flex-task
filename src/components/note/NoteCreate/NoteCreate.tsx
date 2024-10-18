@@ -59,7 +59,7 @@ const NoteCreate: React.FC = () => {
         <Icon name="x" fill="none" />
       </Button>
 
-      <form onSubmit={onCreate}>
+      <form onSubmit={onCreate} className="h-full">
         <Input
           type="text"
           placeholder="Add a title"
@@ -73,7 +73,8 @@ const NoteCreate: React.FC = () => {
 
         <Textarea
           placeholder="Write your note here..."
-          className="p-0 pl-3.5 border-none shadow-none focus-visible:ring-0"
+          style={{height: 'calc(100% - 120px)'}}
+          className="p-0 pl-3.5 mb-[80px] border-none shadow-none focus-visible:ring-0"
           value={content}
           onChange={(e) => setContent(e.target.value)}
         />
