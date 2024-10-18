@@ -45,6 +45,7 @@
     --flex-fc: #fcfcfc;
     --flex-ea: #eaeaea;
     --flex-ph: #bfbfbf;
+    --flex-bglight: #eff4ff;
   }
   .dark {
     --background: 0 0% 3.9%;

@@ -45,6 +45,7 @@ export default {
         flex_fc: "var(--flex-fc)",
         flex_ea: "var(--flex-ea)",
         flex_ph: "var(--flex-ph)",
+        flex_bglight: "var(--flex-bglight)",
 
         primary: {
           DEFAULT: "hsl(var(--primary))",

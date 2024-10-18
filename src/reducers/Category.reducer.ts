@@ -8,7 +8,11 @@ export type CategoryActions =
       payload: CategoryModel;
     }
   | { type: "REMOVE_CATEGORY"; id: string }
-  | { type: "CREATE_NOTE"; payload: { categoryId: string; note: NoteModel } };
+  | { type: "CREATE_NOTE"; payload: { categoryId: string; note: NoteModel } }
+  | {
+      type: "REMOVE_NOTE";
+      payload: { categoryId: string; noteId: string };
+    };
 
 export const categoryReducer = (
   state: CategoryModel[],
@@ -27,6 +31,18 @@ export const categoryReducer = (
           ? {
               ...item,
               notes: [...item.notes, { id: uuidV4(), ...action.payload.note }],
+            }
+          : item
+      );
+
+    case "REMOVE_NOTE":
+      return state.map((item: CategoryModel) =>
+        item.id === action.payload.categoryId
+          ? {
+              ...item,
+              notes: item.notes.filter(
+                (note) => note.id !== action.payload.noteId
+              ),
             }
           : item
       );

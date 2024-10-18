@@ -99,13 +99,8 @@ const NoteList: React.FC = () => {
               <p className="text-muted-foreground">No notes found.</p>
             ) : (
               <ul className="flex flex-col">
-                {filteredNotes.map((note, index) => (
-                  <React.Fragment key={note.id}>
-                    <NoteItem note={note} />
-                    {index < categories.length - 1 && (
-                      <Separator className="my-2" />
-                    )}
-                  </React.Fragment>
+                {filteredNotes.map((note) => (
+                  <NoteItem key={note.id} note={note} />
                 ))}
               </ul>
             )}
