@@ -21,6 +21,8 @@ const CategoryCreate: React.FC = () => {
     notes: [],
   });
 
+  const isFormValid = newCategory.title.trim() !== "";
+
   useEffect(() => {
     inputRef.current?.focus();
   }, [isCreate]);
@@ -56,7 +58,7 @@ const CategoryCreate: React.FC = () => {
       {isCreate ? (
         <form
           onSubmit={onCreate}
-          className="flex w-full max-w-sm items-center space-x-2"
+          className="flex w-full items-center space-x-2"
         >
           <Input
             type="text"
@@ -72,6 +74,7 @@ const CategoryCreate: React.FC = () => {
             type="submit"
             size="icon"
             className="bg-flex_green hover:bg-flex_darkgreen p-2"
+            disabled={!isFormValid}
           >
             <Check />
           </Button>

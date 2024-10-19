@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { CategoryModel } from "@/models/Category.model";
@@ -11,9 +11,9 @@ const CategoryItem: React.FC<CategoryModel> = ({ id, title, notes }) => {
     location.pathname === `/${id}/notes` ||
     location.pathname === `/${id}/note-create`;
 
-  function handleNavigate() {
+  const handleNavigate = useCallback(() => {
     navigate(`/${id}/notes`);
-  }
+  }, [navigate, id]);
 
   return (
     <li
@@ -42,4 +42,4 @@ const CategoryItem: React.FC<CategoryModel> = ({ id, title, notes }) => {
   );
 };
 
-export default CategoryItem;
+export default React.memo(CategoryItem);
