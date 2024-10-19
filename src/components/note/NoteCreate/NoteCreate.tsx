@@ -78,7 +78,7 @@ const NoteCreate: React.FC = () => {
   }
 
   return (
-    <Card className="grow relative w-full">
+    <Card className="grow relative w-full h-full">
       <div className="flex gap-2 absolute right-5 top-5">
         {isEmpty ? (
           <Button

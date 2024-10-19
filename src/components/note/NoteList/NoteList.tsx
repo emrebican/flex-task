@@ -81,7 +81,7 @@ const NoteList: React.FC = () => {
       {selectedCategory.notes.length === 0 ? (
         <NoteCreate />
       ) : (
-        <div className="w-full flex flex-wrap gap-2.5">
+        <div className="w-full h-full flex flex-wrap gap-2.5">
           <Card className="grow flex-1 min-w-[350px] relative">
             <Button
               type="button"
