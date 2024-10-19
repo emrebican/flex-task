@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useCategories } from "@/context/Category.context";
 import { useToast } from "@/hooks/use-toast";
+import { useCategories } from "@/hooks/use-categories";
 
 import Card from "@/components/ui/card";
 import { Button } from "@/components/ui/button";

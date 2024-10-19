@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import { Outlet } from "react-router-dom";
-import { useCategories } from "@/context/Category.context";
+import { useCategories } from "@/hooks/use-categories";
 
 import Card from "@/components/ui/card";
 import Loading from "@/components/ui/Loading/Loading";
@@ -12,11 +12,8 @@ const CategoryList: React.FC = () => {
   const { categories } = useCategories();
 
   return (
-    <div
-      className="flex gap-2.5 flex-wrap md:flex-nowrap"
-      style={{ height: "calc(100vh - 78px)" }}
-    >
-      <Card className="h-full w-full md:w-[480px] overflow-x-hidden overflow-y-auto">
+    <div className="flex gap-2.5 flex-wrap md:flex-nowrap h-full md:h-[calc(100vh-68px)]">
+      <Card className="h-full w-full md:w-[480px] overflow-x-hidden overflow-y-hidden md:overflow-y-scroll">
         {/* ADD NEW CATEGORY */}
         <CategoryCreate />
 

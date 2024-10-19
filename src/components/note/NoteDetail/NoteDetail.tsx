@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 
+import { useCategories } from "@/hooks/use-categories"; 
 import Card from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import { Separator } from "@/components/ui/separator";
-import { useCategories } from "@/context/Category.context";
 
 import NoteUpdate from "../NoteUpdate/NoteUpdate";
 import { Check, Trash, X } from "lucide-react";

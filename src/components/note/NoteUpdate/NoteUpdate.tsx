@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
+import { useCategories } from "@/hooks/use-categories";
 
 import {
   DialogContent,
@@ -12,7 +13,6 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { useCategories } from "@/context/Category.context";
 
 import { ActionsEnum } from "@/constants/actions.constants";
 import { NoteModel } from "@/models/Note.model";

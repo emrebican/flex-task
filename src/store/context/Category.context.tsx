@@ -1,16 +1,17 @@
-import React, { ReactNode, useContext, useEffect, useReducer } from "react";
-import { CategoryActions, categoryReducer } from "@/reducers/Category.reducer";
+import React, { ReactNode, useEffect, useReducer } from "react";
+import { categoryReducer } from "@/store/reducers/Category.reducer";
 import { CategoryModel } from "@/models/Category.model";
-import dummyData from "../assets/dummy.json";
+import dummyData from '../../assets/dummy.json'
+import { CategoryActions } from "@/models/CategoryActions.model";
 
-interface CategoryContextType {
+export interface CategoryContextType {
   categories: CategoryModel[];
   dispatch: React.Dispatch<CategoryActions>;
 }
 
-const CategoryContext = React.createContext<CategoryContextType | undefined>(
-  undefined
-);
+export const CategoryContext = React.createContext<
+  CategoryContextType | undefined
+>(undefined);
 
 export const CategoryProvider: React.FC<{ children: ReactNode }> = ({
   children,
@@ -29,14 +30,4 @@ export const CategoryProvider: React.FC<{ children: ReactNode }> = ({
       {children}
     </CategoryContext.Provider>
   );
-};
-
-export const useCategories = () => {
-  const context = useContext(CategoryContext);
-
-  if (!context) {
-    throw new Error("context must be used within a Provider");
-  }
-
-  return context;
 };

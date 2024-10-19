@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Outlet, useNavigate, useParams } from "react-router-dom";
-import { useCategories } from "@/context/Category.context";
+import { useCategories } from "@/hooks/use-categories";
 import { useToast } from "@/hooks/use-toast";
 
 import Card from "@/components/ui/card";
@@ -66,7 +66,7 @@ const NoteList: React.FC = () => {
       description: "Category deleted.",
     });
 
-    navigate("/")
+    navigate("/");
   }
 
   if (!selectedCategory)
@@ -81,7 +81,7 @@ const NoteList: React.FC = () => {
       {selectedCategory.notes.length === 0 ? (
         <NoteCreate />
       ) : (
-        <div className="w-full flex flex-wrap gap-5 md:gap-2.5">
+        <div className="w-full flex flex-wrap gap-2.5">
           <Card className="grow flex-1 min-w-[350px] relative">
             <Button
               type="button"

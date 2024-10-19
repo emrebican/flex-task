@@ -7,7 +7,7 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <div className="bg-gray h-screen">
+    <div className="bg-gray">
       <nav className="bg-flex_blue h-12 flex items-center sticky top-0">
         <h2 className="text-white font-semibold font-sans pl-5">Your Notes</h2>
       </nav>

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useCategories } from "@/context/Category.context";
+import { useCategories } from "@/hooks/use-categories";
 import { useToast } from "@/hooks/use-toast";
 
 import { Button } from "@/components/ui/button";
