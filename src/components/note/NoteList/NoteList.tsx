@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import Loading from "@/components/ui/Loading/Loading";
 
-import { Plus, Trash } from "lucide-react";
+import { Plus, Search, Trash } from "lucide-react";
 import { ActionsEnum } from "@/constants/actions.constants";
 
 const NoteList: React.FC = () => {
@@ -81,7 +81,7 @@ const NoteList: React.FC = () => {
       {selectedCategory.notes.length === 0 ? (
         <NoteCreate />
       ) : (
-        <div className="w-full h-full flex flex-wrap gap-2.5">
+        <div className="w-full h-full flex flex-col md:flex-row flex-wrap gap-2.5">
           <Card className="grow flex-1 min-w-[350px] relative">
             <div className="flex flex-wrap md:flex-nowrap items-center gap-2.5 mb-5">
               {/* Create Note */}
@@ -97,13 +97,16 @@ const NoteList: React.FC = () => {
                 <Plus />
               </Button>
               {/* Search notes */}
-              <Input
-                type="text"
-                placeholder="Search..."
-                className="xl:w-[252px] w-[calc(100%-46px)] bg-flex_fc placeholder:text-flex_ea border-flex_ea font-semibold"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-              />
+              <div className="relative flex items-center xl:w-[252px] w-[calc(100%-46px)]">
+                <Search className="absolute left-3 text-flex_ea" />
+                <Input
+                  type="text"
+                  placeholder="Search..."
+                  className=" bg-flex_fc placeholder:text-flex_ea border-flex_ea font-semibold pl-10"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                />
+              </div>
 
               <Button
                 type="button"
