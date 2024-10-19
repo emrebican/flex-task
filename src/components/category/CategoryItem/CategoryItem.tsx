@@ -1,6 +1,5 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import "./CategoryItem.css";
 
 import { CategoryModel } from "@/models/Category.model";
 import { ChevronDown, ChevronRight, Folder } from "lucide-react";
@@ -18,7 +17,7 @@ const CategoryItem: React.FC<CategoryModel> = ({ id, title, notes }) => {
 
   return (
     <li
-      className={`w-full  ${
+      className={`w-full h-[42px] px-2.5  ${
         isActive ? "transparent" : "bg-flex_cyan"
       } rounded-md flex items-center justify-between cursor-pointer`}
       onClick={handleNavigate}

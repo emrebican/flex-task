@@ -1,26 +1,7 @@
+import { v4 as uuidV4 } from "uuid";
 import { ActionsEnum } from "@/constants/actions.constants";
 import { CategoryModel } from "@/models/Category.model";
-import { NoteModel } from "@/models/Note.model";
-import { v4 as uuidV4 } from "uuid";
-
-export type CategoryActions =
-  | {
-      type: ActionsEnum.CREATE_CATEGORY;
-      payload: CategoryModel;
-    }
-  | { type: ActionsEnum.REMOVE_CATEGORY; id: string }
-  | {
-      type: ActionsEnum.CREATE_NOTE;
-      payload: { categoryId: string; note: NoteModel };
-    }
-  | {
-      type: ActionsEnum.REMOVE_NOTE;
-      payload: { categoryId: string; noteId: string };
-    }
-  | {
-      type: ActionsEnum.UPDATE_NOTE;
-      payload: { categoryId: string; noteId: string; note: NoteModel };
-    };
+import { CategoryActions } from "@/models/CategoryActions.model";
 
 export const categoryReducer = (
   state: CategoryModel[],

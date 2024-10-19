@@ -1,12 +1,10 @@
 import React, { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 import { useCategories } from "@/context/Category.context";
-import "./CategoryList.css";
 
-// import CategoryItem from "../CategoryItem/CategoryItem";
 import Card from "@/components/ui/card";
-import CategoryCreate from "../CategoryCreate/CategoryCreate";
 import Loading from "@/components/ui/Loading/Loading";
+import CategoryCreate from "../CategoryCreate/CategoryCreate";
 
 const CategoryItem = React.lazy(() => import("../CategoryItem/CategoryItem"));
 
@@ -18,7 +16,7 @@ const CategoryList: React.FC = () => {
       className="flex gap-2.5 flex-wrap md:flex-nowrap"
       style={{ height: "calc(100vh - 78px)" }}
     >
-      <Card className="h-full w-full md:w-[480px] overflow-x-hidden overflow-y-scroll">
+      <Card className="h-full w-full md:w-[480px] overflow-x-hidden overflow-y-auto">
         {/* ADD NEW CATEGORY */}
         <CategoryCreate />
 

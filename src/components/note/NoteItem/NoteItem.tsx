@@ -1,5 +1,5 @@
-import { NoteModel } from "@/models/Note.model";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { NoteModel } from "@/models/Note.model";
 
 const NoteItem: React.FC<{ note: NoteModel }> = ({ note }) => {
   const { categoryId } = useParams();

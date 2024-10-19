@@ -1,21 +1,24 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Outlet, useNavigate, useParams } from "react-router-dom";
 import { useCategories } from "@/context/Category.context";
+import { useToast } from "@/hooks/use-toast";
 
 import Card from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-
 import NoteItem from "../NoteItem/NoteItem";
+import NoteCreate from "../NoteCreate/NoteCreate";
+import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import NoteCreate from "../NoteCreate/NoteCreate";
 import Loading from "@/components/ui/Loading/Loading";
-import { Plus } from "lucide-react";
+
+import { Plus, Trash } from "lucide-react";
+import { ActionsEnum } from "@/constants/actions.constants";
 
 const NoteList: React.FC = () => {
   const navigate = useNavigate();
   const { categoryId } = useParams();
-  const { categories } = useCategories();
+  const { toast } = useToast();
+  const { categories, dispatch } = useCategories();
 
   const [search, setSearch] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -54,6 +57,18 @@ const NoteList: React.FC = () => {
     return () => clearTimeout(timeOut);
   }, [search, selectedCategory]);
 
+  function onRemoveCategory() {
+    dispatch({ type: ActionsEnum.REMOVE_CATEGORY, id: categoryId as string });
+
+    toast({
+      variant: "destructive",
+      title: "Category",
+      description: "Category deleted.",
+    });
+
+    navigate("/")
+  }
+
   if (!selectedCategory)
     return (
       <div className="w-full text-muted-foreground text-center">
@@ -67,7 +82,16 @@ const NoteList: React.FC = () => {
         <NoteCreate />
       ) : (
         <div className="w-full flex flex-wrap gap-5 md:gap-2.5">
-          <Card className="grow flex-1 min-w-[350px]">
+          <Card className="grow flex-1 min-w-[350px] relative">
+            <Button
+              type="button"
+              size="icon"
+              className="bg-flex_red hover:bg-flex_darkred p-2 absolute top-5 right-5"
+              onClick={onRemoveCategory}
+            >
+              <Trash fill="white" />
+            </Button>
+
             <div className="max-w-[480px] flex items-center gap-2.5 mb-5">
               {/* Create Note */}
               <div>
@@ -105,6 +129,7 @@ const NoteList: React.FC = () => {
               </ul>
             )}
           </Card>
+
           {/* Note Detail */}
           <Outlet />
         </div>

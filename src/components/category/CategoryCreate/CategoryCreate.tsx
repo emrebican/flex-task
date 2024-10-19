@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useCategories } from "@/context/Category.context";
+import { useToast } from "@/hooks/use-toast";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,7 +9,6 @@ import { Separator } from "@/components/ui/separator";
 import { CategoryModel } from "@/models/Category.model";
 import { ActionsEnum } from "@/constants/actions.constants";
 import { Check, Plus, X } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
 
 const CategoryCreate: React.FC = () => {
   const { toast } = useToast();

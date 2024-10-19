@@ -1,14 +1,16 @@
-import { Button } from "@/components/ui/button";
+import React, { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useToast } from "@/hooks/use-toast";
+
 import Card from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import { Separator } from "@/components/ui/separator";
 import { useCategories } from "@/context/Category.context";
-import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+
 import NoteUpdate from "../NoteUpdate/NoteUpdate";
-import { ActionsEnum } from "@/constants/actions.constants";
 import { Check, Trash, X } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
+import { ActionsEnum } from "@/constants/actions.constants";
 
 const NoteDetail: React.FC = () => {
   const { toast } = useToast();
@@ -19,10 +21,6 @@ const NoteDetail: React.FC = () => {
 
   const category = categories.find((category) => category.id === categoryId);
   const noteDetail = category?.notes.find((note) => note.id === noteId);
-
-  useEffect(() => {
-    console.log(noteDetail, "DETAIL");
-  }, [noteDetail]);
 
   function onDelete() {
     if (categoryId && noteId) {
