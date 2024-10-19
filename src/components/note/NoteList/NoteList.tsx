@@ -69,12 +69,7 @@ const NoteList: React.FC = () => {
     navigate("/");
   }
 
-  if (!selectedCategory)
-    return (
-      <div className="w-full text-muted-foreground text-center">
-        There is no notes!
-      </div>
-    );
+  if (!selectedCategory) return null;
 
   return (
     <React.Fragment>

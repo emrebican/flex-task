@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useParams } from "react-router-dom";
 import { useCategories } from "@/hooks/use-categories";
 
 import Card from "@/components/ui/card";
@@ -10,6 +10,7 @@ const CategoryItem = React.lazy(() => import("../CategoryItem/CategoryItem"));
 
 const CategoryList: React.FC = () => {
   const { categories } = useCategories();
+  const { categoryId } = useParams();
 
   return (
     <div className="flex gap-2.5 flex-wrap md:flex-nowrap h-full md:h-[calc(100vh-68px)]">
@@ -37,7 +38,13 @@ const CategoryList: React.FC = () => {
 
       {/* NOTE LIST */}
       <div className="w-full h-full">
-        <Outlet />
+        {categoryId ? (
+          <Outlet />
+        ) : (
+          <div className="w-full text-muted-foreground text-center">
+            There is no selected category!
+          </div>
+        )}
       </div>
     </div>
   );
