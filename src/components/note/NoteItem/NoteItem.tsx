@@ -21,10 +21,10 @@ const NoteItem: React.FC<{ note: NoteModel }> = ({ note }) => {
         isActive ? "bg-flex_bglight" : "bg-transparent"
       }`}
     >
-      <h4 className="px-2 font-semibold text-black line-clamp-1">
+      <h4 className="px-2 break-all font-semibold text-black line-clamp-1">
         {note.title}
       </h4>
-      <p className="px-2 text-black line-clamp-1">{note.content}</p>
+      <p className="px-2 break-all text-black line-clamp-1">{note.content}</p>
       <hr className="mt-2" />
     </div>
   );

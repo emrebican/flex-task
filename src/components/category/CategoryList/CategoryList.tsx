@@ -13,7 +13,7 @@ const CategoryList: React.FC = () => {
 
   return (
     <div className="flex gap-2.5 flex-wrap md:flex-nowrap h-full md:h-[calc(100vh-68px)]">
-      <Card className="h-full w-full md:w-[480px] overflow-x-hidden overflow-y-hidden md:overflow-y-auto">
+      <Card className="h-full w-full min-w-[300px] md:w-[480px] overflow-x-hidden overflow-y-hidden md:overflow-y-auto">
         {/* ADD NEW CATEGORY */}
         <CategoryCreate />
 

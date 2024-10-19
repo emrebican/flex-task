@@ -83,38 +83,36 @@ const NoteList: React.FC = () => {
       ) : (
         <div className="w-full h-full flex flex-wrap gap-2.5">
           <Card className="grow flex-1 min-w-[350px] relative">
-            <Button
-              type="button"
-              size="icon"
-              className="bg-flex_red hover:bg-flex_darkred p-2 absolute top-5 right-5"
-              onClick={onRemoveCategory}
-            >
-              <Trash fill="white" />
-            </Button>
-
-            <div className="max-w-[480px] flex items-center gap-2.5 mb-5">
+            <div className="flex flex-wrap md:flex-nowrap items-center gap-2.5 mb-5">
               {/* Create Note */}
-              <div>
-                <Button
-                  className="w-[218px] bg-flex_green flex justify-between py-0 px-2 hover:bg-flex_darkgreen"
-                  onClick={() => navigate(`/${categoryId}/note-create`)}
-                >
-                  <span className="grow">Create Note</span>
-                  <Separator
-                    orientation="vertical"
-                    className="h-full mr-1 bg-flex_darkgreen"
-                  />
-                  <Plus />
-                </Button>
-              </div>
+              <Button
+                className="w-full xl:w-[218px] bg-flex_green flex justify-between py-0 px-2 hover:bg-flex_darkgreen"
+                onClick={() => navigate(`/${categoryId}/note-create`)}
+              >
+                <span className="grow">Create Note</span>
+                <Separator
+                  orientation="vertical"
+                  className="h-full mr-1 bg-flex_darkgreen"
+                />
+                <Plus />
+              </Button>
               {/* Search notes */}
               <Input
                 type="text"
                 placeholder="Search..."
-                className="bg-flex_fc placeholder:text-flex_ea border-flex_ea font-semibold"
+                className="xl:w-[252px] w-[calc(100%-46px)] bg-flex_fc placeholder:text-flex_ea border-flex_ea font-semibold"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
               />
+
+              <Button
+                type="button"
+                size="icon"
+                className="bg-flex_red hover:bg-flex_darkred p-2 ml-auto"
+                onClick={onRemoveCategory}
+              >
+                <Trash fill="white" />
+              </Button>
             </div>
 
             {isLoading ? (
