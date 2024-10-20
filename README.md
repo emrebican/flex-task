@@ -15,6 +15,7 @@
 - [Usage](#usage)
 - [Project Structure](#project-structure)
 - [Screenshots](#screenshots)
+- [Answers](#answers)
 
 ## Features
 
@@ -39,11 +40,11 @@
 
 1. Clone the repository:
    [Repository link](https://github.com/emrebican/flex-task)
+
    ```bash
    git clone <repository-url>
    cd flex-task
    ```
-
 
 2. Install dependencies:
 
@@ -108,3 +109,21 @@ flex-task/
 ![App Screenshot-1](public/images/screenshot-1.png)
 ![App Screenshot-2](public/images/screenshot-2.png)
 ![App Screenshot-3](public/images/screenshot-3.png)
+
+## Answers
+
+#### How might you make this app more secure?
+
+- We can store sensitive information values like API keys into .env files. And we shouldn’t send these files to client side or repo.
+- Applying limits to API requests which avoids attacks especially Ddos attacks.
+- Using HTTPS to encrypt the communication between client and server.
+- User authentication with JWT, Google Auth etc.
+- Using ID generators to prevent accessing user data’s
+
+#### How would you make this solution scale to millions of records?
+
+- Implementing pagination
+- Debouncing for search input to delay trigger function until user stop writing. This avoids unnecessary renders.
+- For state management we can split contexts.
+- Using React.lazy loading and code splitting to render pages and list only when they needed.
+- There is various libraries like React table to increase app’s performance which has large datas and lists.
