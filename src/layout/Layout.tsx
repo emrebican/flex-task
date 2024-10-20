@@ -8,7 +8,10 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className="bg-gray">
-      <nav className="bg-flex_blue h-12 flex items-center sticky top-0 z-50">
+      <nav
+        className="bg-flex_blue h-12 flex items-center sticky top-0 z-50"
+        style={{ zIndex: 100 }}
+      >
         <h2 className="text-white font-semibold font-sans pl-5">Your Notes</h2>
       </nav>
       <main className="p-2.5">{children}</main>
